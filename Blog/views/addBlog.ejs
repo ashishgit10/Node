@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/head") %>
+</head>
+<style>
+    * {
+        input::placeholder {
+            color: white !important;
+        }
+    }
+</style>
+
+<body>
+    <%- include("./partials/nav") %>
+    <div class="vh-100 bg-black">
+        <div class="container-fluid g-3 d-flex justify-content-center vh-100 align-items-center flex-column">
+            <h1 class="text-center text-light">Add Blog</h1>
+            <form method="POST" action="/blog" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="thumbnail" class="form-label text-light">File</label>
+                    <input type="file" class="form-control bg-black text-light" name="thumbnail" id="thumbnail">
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label text-light">Title</label>
+                    <input type="text" class="form-control bg-black text-light" name="title" id="title">
+                </div>
+                <div class="mb-3">
+                    <label for="body" class="form-label text-light">Discription</label>
+                    <textarea class="form-control bg-black text-light" name="body" id="body" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+        </div>
+    </div>
+    <%- include("./partials/script") %>
+</body>
+
+</html>

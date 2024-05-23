@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+    * {
+        font-family: Roboto;
+    }
+</style>
+
+<body>
+    <h1>Hello from home  <%=locals.name%></h1>
+    <div>
+        <% if(locals.id) {%>
+            <p>Generated url=http://localhost:8000/url/<%=id %>
+            </p>
+            <% }%>
+    </div>
+    <form method="POST" action="/url">
+        <lable for="url">Enter url to generate ShortUrl</lable>
+        <input type="text" name="url" />
+        <button id=btn onclick="prvt()">Generate</button>
+    </form>
+    <div>
+        <% if(locals.urls){ %>
+            <table>
+                <thead>
+                    <th>Srl no.</th>
+                    <th>Id</th>
+                    <th>RedirectUrl</th>
+                    <th>Clicks</th>
+                </thead>
+                <tbody>
+                    <% urls.forEach((url,ind)=> { %>
+                        <tr>
+                            <td>
+                                <%=ind +1%>
+                            </td>
+                            <td>
+                                <%=url.shortId%>
+                            </td>
+                            <td>
+                                <%=url.redirectUrl%>
+                            </td>
+                            <td>
+                                <%=url.visitedHistory.length%>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+                </tbody>
+            </table>
+            <% } %>
+    </div>
+<!--     <script>
+const btn=document.querySelector("#btn")
+
+btn.addEventListener("click",function prvt(e) {
+e.preventDefault();
+}
+)
+    </script> -->
+</body>
+
+
+</html>
